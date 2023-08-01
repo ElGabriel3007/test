@@ -1,0 +1,534 @@
+/*:ROOT É USADO PARA CRIAR VARIÁVEIS GLOBAIS NO CSS, USANDO O FORMATO = --NOMEDAVARIÁVEL:...;*/
+:root {
+    --primary-color: #0a1128;
+    --white-color: #fff;
+    --lightgray-color: #eeeeee;
+    --secondary-color: crimson;
+    --black-color: #000;
+    --gap: 3rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*
+FONTES SELECIONADAS PARA A PÁGINA (PELO GOOGLE FONTS);
+font-family: 'Montserrat', sans-serif;
+font-family: 'Open Sans', sans-serif;
+*/
+
+html {
+/*USADO PARA PADRONIZAR A UNIDADE DE MEDIDA 'REM', POIS 62.5% -> 1REM = 10PX*/
+    font-size: 62.5%;
+/*USADO PARA DAR UM COMPORTAMENTO MAIS CALMO AO SCROLL DO MOUSE. SMOOTH É UMA TRANSIÇÃO TRANQUILA;*/
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-size: 6rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 6rem;
+    margin-bottom: 5rem;
+    text-transform: uppercase;
+    /*ESPAÇAMENTO ENTRE LINHAS*/
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 5rem;
+}
+
+h4 {
+    font-size: 4.5rem;
+}
+
+h5 {
+    font-size: 4rem;
+}
+
+h6 {
+    font-size: 3.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin-bottom: 3rem;
+}
+
+table {
+    width: 100%;
+    min-width: 100%;
+}
+
+table td, table th {
+/*USADO PARA FAZER A BORDA ENTRE CADA ELEMENTO DA TABELA, INCLUINDO OS TÍTULOS;*/
+    border: 0.1rem solid var(--lightgray-color);
+    border-collapse: collapse;
+/*ALINHAMENTO DE TEXTO A ESQUERDA;*/
+    text-align: left;
+    padding: 0.5rem;
+/*USADO PARA NÃO QUEBRAR TEXTOS DENTRO DAS TABELAS (E EM GERAL TAMBÉM);*/
+    white-space: nowrap;
+}
+
+table th {
+    background-color: var(--lightgray-color);
+}
+
+table caption {
+    text-align: left;
+    font-style: italic;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+tfoot {
+    font-style: italic;
+    font-size: 2rem;
+}
+
+/*A CLASSE 'MAIN-BG' FOI CRIADA PARA GUARDAR A IMAGEM DE BACKGROUND PRINCIPAL. SEMPRE QUE USARMOS ESSA CLASSE, O FUNDO ESCOLHIDO APARECERÁ;*/
+.main-bg {
+    background-image: url('../img/main-bg.svg.svg');
+    /*IMAGEM GERADA NO SITE SVG BACKGROUNDS, A IMAGEM DEVE ESTAR COM A EXTENSÃO .SVG*/
+    background-size: cover;
+    /*INFORMA AO NAVEGADOR QUE ELE DEVE SE CERTIFICAR DE QUE A IMAGEM COBRIRÁ SEMPRE O CONTÊINER INTEIRO (NESTE CASO, TODO O HTML);*/
+    background-position: center center;
+    /*POSICIONA A IMAGEM NO CENTRO DO VIEWPORT SEMPRE, MESMO QUE A TELA SEJA AUMENTADA/DIMINUIDA A IMAGEM SE CORRIGE AO CENTRO;*/
+    color: var(--white-color);
+}
+
+.white-bg {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+}
+
+/*A CLASSE 'MAIN-CONTENT' FOI CRIADA PARA DAR O ESPAÇAMENTO NAS LATERAIS, POIS O CONTEÚDO FOI PADRONIZADO EM 1200PX = 120REM. COM ISSO, SEMPRE QUE A CLASSE FOR USADA, NESTE LOCAL TERÁ O ESPAÇAENTO NAS LATERAIS, E O CONTEÚDO OCUPARÁ APENAS 1200PX/120REM;*/
+.main-content {
+    max-width: 120rem;
+    margin: 0 auto;
+    /*O GAP É USADO COMO ESPAÇAMENTO PADRÃO ENTRE OS CONTEÚDOS;*/
+    padding: 10rem var(--gap);
+}
+
+/*A CLASSE 'SECTION' FOI CRIADA PARA MANTER UMA ALTURA MÍNIMA DO CONTÊINER NO VIEWPORT, NESTE CASO, NO MÍNIMO 100% DO VIEWPORT SERÁ CONSIDERADO PARA A SEÇÃO;*/
+.section {
+    min-height: 100vh;
+}
+
+.menu {
+    /*USADO PARA FIXAR O MENU, OU SEJA, QUANDO A PÁGINA É ROLADA PARA BAIXO/CIMA, O MENU ACOMPANHA 'FIXADO';*/
+    position: fixed;
+    /*TOP/LEFT/RIGHT COMO 0, SIGNIFICA QUE A POSITION DELES PARTIRÁ DO 0, OU SEJA, DO CANTO INICIAL DA PÁGINA POR CIMA/ESQUERDA/DIREITA;*/
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-bottom: 0.1rem solid var(--lightgray-color);
+    z-index: 1;
+}
+
+/*A CLASSE 'MENU-CONTENT' FOI CRIADA PARA SEPARAR OS DOIS ELEMENTOS DA SEÇÃO (H1 E UL), NESTE CASO USANDO FLEX-BOX*/
+.menu-content {
+    display: flex;
+    /*JUSTIFY-CONTENT: STACE-BETWEEN SEPARA OS DOIS ELEMETNOS PARA CADA CANTO DA TELA*/
+    justify-content: space-between;
+    /*ALINHA OS ITENS AO CENTRO, CONFORME VAI MUDANDO PADDING...MARGIN...;*/
+    align-items: center;
+    /*ZERAMOS O PADDING TOP E BOTTOM POR QUE COM ISSO QUANDO MUDAMOS O 'A' NO MENU, SEU PADDING EMPURRARÁ E DEFINIRÁ O TAMANHO DO MENU;*/
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*USADO PARA CRIAR OUTRA SEPARAÇÃO, DESTA VEZ NA UL PARA NAVEGAÇÃO;*/
+.menu ul {
+    display: flex;
+    list-style: none;
+}
+
+/*MUDANDO PARA DISPLAY BLOCK OS A'S PARA QUE POSSA SER AJUSTADO SEM ALTERAR A ORDEM/LOCALIZAÇÃO, NÃO EMPURRA O CONTÊINER PARA BAIXO;*/
+.menu ul li a {
+    display: block;
+    padding: 2rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    position: relative;
+}
+
+/*CRIADO PARA FAZER A BORDA/SUBLINHAR OS ITENS DA NAVEGAÇÃO.*/
+.menu ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    width: 0;
+    height: 0.2rem;
+    background-color: var(--secondary-color);
+    transition: all 300ms ease-in-out;
+}
+
+.menu ul li a:hover::after {
+    width: 50%;
+    left: 25%;
+}
+
+.menu h1 {
+    font-size: 2.3rem;
+    color: var(--primary-color);
+}
+
+.menu h1 a {
+    /*COLOR: INHERIT É USADO PARA INFORMAR QUE A COR USADA SERÁ DO ELEMENTO PAI, NESTE CASO, A TERA A COR DE H1*/
+    color: inherit;
+}
+
+/*SEÇÃO CRIADA PARA DAR O ESPAÇAMENTO EMBAIXO DO MENU, PARA QUE FRASES NÃO FIQUEM ESCONDIDAS EMBAIXO;*/
+.menu-spacing {
+    height: 6.5rem;
+}
+
+/*CLASSE CRIADA PARA SEPARAR EM DUAS COLUNAS, TEXTO E IMAGEM;*/
+.intro-content {
+    /*USADO PARA NÃO INTERFERIR NOS DEMAIS CONTÊINERES. COM RELATIVE, PODEMOS ALTERAR A POSIÇÃO SEM MUDAR DOS DEMAIS;*/
+    position: relative;
+    /*USAMOS TOP NEGATIVO PARA DIMINUIR A ALTURA DO MENU;*/
+    /*top: -8rem;*/
+    display: grid;
+    /*SEPARAÇÃO DA TELA, INICIALMENTE EM METADE (1FR 1FR);*/
+    grid-template-columns: 1fr 1.5fr;
+    /*ALING-ITEMS DIFERENTE DE JUSTFY-CONTENT, TRABALHA COM O EIXO X;*/
+    align-items: center;
+    gap: var(--gap);
+    min-height: 100vh;
+}
+
+/*CLASSE CRIADA PARA MANIPULAR O TEXTO/IMAGEM DA SEÇÃO;*/
+.intro-text-content,
+.intro-img {
+    display: flex;
+    /*COLUMN WRAP É USADO PARA DEIXAR OS ITEM UM EMBAIXO DO OUTRO, NESTE CASO O H2 E O P;*/
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+/*CLASSE CRIADA PARA MUDAR TAMANHO DA FONTE DO TEXTO DO P;*/
+.intro-text-content p {
+    font-size: 2.3rem;
+}
+
+/*CLASSE CRIADA PARA AJUSTAR ALTURA E COMPRIMENTO DA IMAGEM SVG DA SEÇÃO INTRO;*/
+.intro-img img,
+.intro-img svg {
+    max-width: 100%;
+    min-height: auto;
+}
+
+/*CRIADO PARA TRABALHAR COM A SEÇÃO TOP 3;*/
+.top3-content {
+/*DISPLAY FLEXÍVEL FAZ COM QUE O CONTEÚDO POSSA SE MOVIMENTAR*/
+    display: flex;
+/*FLUXO DO DISPLAY COMO COLUMN FAZ COM QUE OS ITEM COMEÇEM DE CIMA E VÃO ATÉ EMBAIXO, ATÉ ACABAR A COLUNA, E CONTINUAM NA PRÓXIMA COLUNA;*/
+    flex-flow: column nowrap;
+/*JUSTIFY-CONTENT ALINHA OS ITENS (H's/P's ETC... NA POSIÇÃO QUE ESCOLHER, NESTE CASO AO CENTRO);*/
+    justify-content: center;
+    min-height: 100vh;
+    max-width: 64rem;
+    text-align: center;
+}
+
+/*CLASSE CRIADA PARA AJUSTAR O TEXTO DA SEÇÃO GRID E TER COMPORTAMENTO DE DISPLAY FLEXÍVEL;*/
+.grid-one-content {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+/*CLASSE CRIADA PARA AJUSTAR A MARGEM DO H2 DENTRO DA GRID;*/
+.grid-main-heading h2 {
+    margin-bottom: 1rem;
+}
+
+/*CRIADA PARA AJUSTAR O PADDING DA DESCRIÇÃO DO TÍTULO;*/
+.grid-description {
+    padding-bottom: 5rem;
+}
+
+/*CLASSE CRIADA PARA AJUSTAR EM TRÊS COLUNAS OS TRÊS PARÁGRAFOS INFORMATIVOS;*/
+.grid {
+    display: grid;
+/*GRID-TEMPLATE-COLUMNS UTILIZADO PARA GERAR FORMATO DE COLUNA, A FONÇÃO REPEAT DÁ OS PARÂMETROS PARA A COLUNA, 3 QUER DIZER QUE SERÃO TRÊS COLUNAS, E 1FR QUER DIZER QUE ELA SE AJUSTARÁ EM TRÊS PARTES IGUAIS NO VIEWPORT;*/
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+/*CRIANDO UM CONTADOR ATRAVÉS DE VARIÁVEL (O NOME DA VARIÁVEL NÃO É IMPORTANTE);*/
+    counter-reset: grid-counter;
+}
+
+.grid h3 {
+    font-size: 3rem;
+/*USAMOS AQUI O POSITION RELATIVE PARA QUE O CONTEÚDO DO CONTADOR, NÚMEROS, NÃO VÁ PARA O TOPO DA PÁGINA, POIS COM POSITION RELATIVE, O CONTEÚDO DO CONTADOR FICA 'PRESO' AO H3;*/
+    position: relative;
+    padding-left: 10rem;
+    padding-bottom: 3rem;
+}
+
+.grid h3::before {
+/*POSICIONANDO O CONTADOR NA REGIÃO ESCOLHIDA USANDO O PSEUDO-ELEMENTO BEFORE (ANTES);*/
+    counter-increment: grid-counter;
+/*POSICIONANDO E INFORMANDO A VARIÁVEL ESCOLHIDA, NESTE CASO O CONTADOR;*/
+    content: counter(grid-counter);
+    position: absolute;
+    font-size: 8rem;
+    font-style: italic;
+    top: -3rem;
+    left: -1rem;
+/*USADO PARA ROTACIONAR O CONTEÚDO DO CONTADOR, 5DEG = 5 GRAUS;*/
+    transform: rotate(5deg);
+}
+
+/*CLASSE CRIADA PARA GARANTIR QUE A MÁXIMA ALTURA E LARGURA DA IMAGEM SEJA DE 360X360;*/
+.gallery-img {
+    width: 100%;
+    max-width: 36rem;
+    max-height: 36rem;
+/*USADO PARA ESCONDER A BARRA DE GUIA DO NAVEGADOR QUANDO O TAMANHO ULTRAPASSA O ESCOLHIDO;*/
+    overflow: hidden;
+}
+
+.gallery-img img {
+    transition: all 300ms ease-in-out;
+}
+
+/*CLASSE CRIADA PARA EDITAR COMPORTAMENTOS DA IMAGEM AO PASSAR O MOUSE SOBRE ELA;*/
+.gallery-img img:hover {
+/*TRANSLATE É USADO PARA DIREÇÃO (ESQUERDA/DIREITA , CIMA/BAIXO);*/
+/*SCALE É USADO PARA AUMENTAR OU DIMINUIR A IMAGEM DENTRO DOS PARÂMETROS (- DIMINUI E + AUMENTA);*/
+/*ROTATE É USADO PARA ROTAÇÃO DA IMAGEM GERALMENTE USANDO GRAUS;*/
+    transform: translate(-3%, 3%) scale(1.2) rotate(5deg);
+}
+
+/*CRIADA PARA AJUSTAR O OVERFLOW DA TABELA, OU SEJA, QUANDO A TELA FICAR MENOR, A TABELA MANTERÁ SEU TAMANHO NORMAL, POREM TERÁ UMA BARRA DE OVERFLOW PARA SER AJUSTADA PELO USUÁRIO;*/
+.responsive-table {
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+/*CRIADO PARA MUDAR PARA O DISPLAY PARA JUNÇÃO DE DUAS COLUNAS NO FORMULÁRIO;*/
+.contact-form {
+    grid-column: span 2;
+}
+
+/*CRIADO PARA EDITAR A CONFIGURAÇÃO INICIAL DO FORMULÁRIO, TIRAR BORDA, COLOCAR EM LINHA E DAR ESPAÇOS;*/
+.contact-form .form-grid {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--gap);
+}
+
+/*??????*/
+.form-group {
+    flex: 1 1 380px;
+}
+
+/*USADO PARA QUEBAR A LINHA ENTRE O LOCAL DA DIGITAÇÃO E A INFORMAÇÃO DO QUE É, FIRST NAME...LAST NAME...;*/
+.form-group label {
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+/*CRIADO PARA EDITAR AS CAIXAS DO FORMULÁRIO, COMPRIMENTO, LARGURA, PADDING, COR...;*/
+.form-group input,
+.form-group textarea {
+    border: none;
+    background-color: var(--white-color);
+/*PADDING (CIMA/BAIXO E ESQUERDA/DIREITA)*/
+    padding: 1.5rem 2rem;
+    width: 100%;
+    font-size: 2.5rem;
+    border: 0.3rem solid var(--black-color);
+}
+
+/*CRIADO PARA AUMENTAR A CAIXA DE TEXTO DO CAMPO DE MENSAGEM;*/
+body .full-width {
+    width: 100%;
+    flex: 1 1 100%
+}
+
+/*CRIADO PARA EDITAR O BOTÃO, CORES, FUNDOS TAMANHO, ETC...;*/
+.full-width button {
+    border: 0.5rem solid var(--white-color);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 1.5rem 2rem;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+/*CRIADO PARA DAR O EFEITO NO BOTÃO AO PASSAR O MOUSE NELE;*/
+.full-width button:hover {
+    border-color: var(--white-color);
+    background-color: var(--white-color);
+    color: var(--primary-color);
+}
+
+/*CRIADO PARA MUDAR E EDITAR O PLACEHOLDER (TEXTO DENTRO DAS CAIXAS DE TEXTO);*/
+.form-group ::placeholder {
+    color: var(--lightgray-color);
+}
+
+
+/*MUDANDO A LEGENDA DO FORMULÁRIO;*/
+.form-grid legend {
+    font-style: italic;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+/*USADO PARA ALINHAR O TEXTO NO CENTRO DA LINHA (NÃO DO BOX);*/
+.footer {
+    text-align: center;
+    font-size: 2rem;
+}
+
+/*USADO PARA MUDAR A COR DO TEXTO DA MENSAGEM;*/
+.footer a {
+    color: var(--black-color);
+}
+
+/*USADO PARA MUDAR A COR DO CORAÇÃO;*/
+.heart {
+    color: red;
+}
+
+/*USADO PARA COLOCAR A MESNAGEM NO CENTRO DO BOX;*/
+.footer p {
+    margin: 0;
+    padding: 3rem;
+}
+
+.close-menu {
+    display: none;
+}
+
+/**USADO PARA CRIAR E EDITAR A SETA PARA VOLTAR AO TOPO DA TELA;*/
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--white-color);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+/*TRANSFORMA UM QUADRADO EM CIRCULO;*/
+    border-radius: 50%;
+    color: var(--primary-color);
+    border: 0.2rem solid var(--primary-color);
+    rotate: -90deg;
+}
+
+/*A PARTIR DAQUI VAMOS USAR AS MEDIAS QUERY PARA QUEBRAR O TEXTO PARA DISPOSITIVOS MENORES;*/
+
+@media (max-width: 80rem) {
+/*PARA A SEÇÃO DA INTRO, A PARTIR DE 800PX A GRID PASSA A TER APENAS 1 COLUNA (1FRAGMENTO);*/
+    .intro-content, .grid {
+        grid-template-columns: 1fr;
+    }
+
+/*CRIADA PARA AJUSTAR A IMAGEM AO TAMANHO TOTAL DA TELA DO DISPOSITIVO APÓS O MARCO DOS 800PX;*/
+    .gallery-img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+/*MESMA FUNÇÃO DO DE CIMA;*/
+    .gallery-img img {
+        width: 100%;
+    }
+
+/*FAZ COM QUE AS IMAGENS DA GALERIA UMA VEZ ABAIXO DOS 800PX, TENHAM UM COMPORTAMENTO COM BACKGROUND ATÉ O FIM;*/
+    .grid-one-content {
+        display: block;
+    }
+
+    .menu {
+        bottom: 0;
+        text-align: center;
+    }
+
+/*CENTRALIZA OS ITENS DO MENU;*/
+    .menu-content, .menu-content ul {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+/*DEFINE O TAMANHO DO MENU ABAIXO DE 800PX;*/
+    .menu-content {
+        height: 100vh;
+    }
+
+    .menu {
+        display: none;
+    }
+
+/*ADICIONA O ICONE DE TRÊS TRAÇOS DO MENU, ALÉM DE EDITAR A SUA PREFERÊNCIA;*/
+    .close-menu-label::after {
+        content: '≡';
+        position: fixed;
+        z-index: 2;
+        top: 1rem;
+        right: 2rem;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        font: 3rem;
+        line-height: 3rem;
+        width: 3rem;
+        height: 3rem;
+        text-align: center;
+        cursor: pointer;
+    }
+
+/*QUANDO O MENU ESTIVER CHECKED (ACIONADO), O DISPLAY SE COMPORTARARÁ COMO BLOQUEADO;*/
+    .close-menu:checked~.menu {
+        display: block;
+    }
+
+/*APÓS ACIONADO O MENU, O ÍCONE TRANSFORMA-SE EM UM X, INDICANDO QUE PODE SER FECHADO;*/
+    .close-menu:checked~.close-menu-label::after {
+        content: '×';
+    }
+
+/*QUANDO O MENU NÃO ESTIVER SELECIONADO, NÃO TERÁ O ESPAÇO RESERVADO A ELE NA TELA (FUNDO BRANCO);*/
+    .menu-spacing {
+        display: none;
+    }
+}
